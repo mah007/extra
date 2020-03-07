@@ -2,14 +2,19 @@
 
 from odoo import models, fields, api
 
-class dietfact(models.Model):
-    _name = 'dietfact.dietfact'
 
-    name = fields.Char()
-    value = fields.Integer()
-    value2 = fields.Float(compute="_value_pc", store=True)
-    description = fields.Text()
+class ProductTemplate(models.Model):
+    _inherit = 'product.template'
 
-    @api.depends('value')
-    def _value_pc(self):
-        self.value2 = float(self.value) / 100
+    is_diet = fields.Boolean('Diet item')
+    calories = fields.Integer('Calories')
+
+    @api.onchange('calories')
+    def _is_diet(self):
+        if self.calories <= 100:
+            self.is_diet = True
+        else:self.is_diet = False
+
+
+
+
