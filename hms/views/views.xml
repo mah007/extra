@@ -1,0 +1,148 @@
+<odoo>
+    <data>
+
+
+        <record id="view_hms_form" model="ir.ui.view">
+            <field name="name">view.hms.section.form</field>
+            <field name="model">hms.section</field>
+            <field name="arch" type="xml">
+                <form string="Section">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hms_tree" model="ir.ui.view">
+            <field name="name">view.hms.section.tree</field>
+            <field name="model">hms.section</field>
+            <field name="arch" type="xml">
+                <tree string="Section">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_floors_form" model="ir.ui.view">
+            <field name="name">view.floors.form</field>
+            <field name="model">hms.floors</field>
+            <field name="arch" type="xml">
+                <form string="Floors">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="section_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_floors_tree" model="ir.ui.view">
+            <field name="name">view.floors.tree</field>
+            <field name="model">hms.floors</field>
+            <field name="arch" type="xml">
+                <tree string="Floors">
+                    <field name="name"/>
+                    <field name="section_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_rooms_form" model="ir.ui.view">
+            <field name="name">view.rooms.form</field>
+            <field name="model">hms.rooms</field>
+            <field name="arch" type="xml">
+                <form string="Rooms">
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="floor_id"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_rooms_tree" model="ir.ui.view">
+            <field name="name">view.rooms.tree</field>
+            <field name="model">hms.rooms</field>
+            <field name="arch" type="xml">
+                <tree string="Rooms">
+                    <field name="name"/>
+                    <field name="floor_id"/>
+                    <field name="state"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_hms_floors" model="ir.actions.act_window">
+            <field name="name">Floors</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hms.floors</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+        <record id="action_hms_rooms" model="ir.actions.act_window">
+            <field name="name">Rooms</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hms.rooms</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+
+        <record id="action_hms_section" model="ir.actions.act_window">
+            <field name="name">Section</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hms.section</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="menu_section_categ" name="Sections" parent="basic_hms.main_menu_configartion" sequence="3"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_section_action" name="Sections Names" parent="menu_section_categ" action="action_hms_section"
+                  sequence="1"/>
+        <menuitem id="menu_floors_categ" name="Floors" parent="basic_hms.main_menu_configartion" sequence="3"/>
+        <menuitem id="menu_rooms_categ" name="Rooms" parent="basic_hms.main_menu_configartion" sequence="3"/>
+
+        <menuitem id="menu_floors_action" name="Floors Names" parent="menu_floors_categ" action="action_hms_floors"
+                  sequence="1"/>
+        <menuitem id="menu_rooms_action" name="Rooms Names" parent="menu_rooms_categ" action="action_hms_rooms"
+                  sequence="1"/>
+
+
+    </data>
+</odoo>
