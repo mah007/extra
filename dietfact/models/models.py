@@ -13,7 +13,10 @@ class ProductTemplate(models.Model):
     def _is_diet(self):
         if self.calories <= 100:
             self.is_diet = True
-        else:self.is_diet = False
+        else:
+            self.is_diet = False
+            print("everything is okay")
+
 
 
 
