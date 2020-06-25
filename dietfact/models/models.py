@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-
+# rebuild this
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
